@@ -1,0 +1,9 @@
+.menu-transition {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 0; /* Start closed */
+  }
+  
+  .menu-open {
+    max-height: 500px; /* Set a maximum height for the open state */
+  }
