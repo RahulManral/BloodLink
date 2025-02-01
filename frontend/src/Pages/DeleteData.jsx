@@ -179,7 +179,7 @@ const DeleteData = () => {
   
     try {
       // Fetch the current list of donors to find the matching record
-      const response = await fetch('http://localhost:3000/api/donors');
+      const response = await fetch('https://blood-link-server-phi.vercel.app/api/donors');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -190,7 +190,7 @@ const DeleteData = () => {
   
       if (donorToDelete) {
         // Perform the delete operation
-        const deleteResponse = await fetch(`http://localhost:3000/api/donors/${donorToDelete.id}`, {
+        const deleteResponse = await fetch(`https://blood-link-server-phi.vercel.app/api/donors/${donorToDelete.id}`, {
           method: 'DELETE',
         });
   

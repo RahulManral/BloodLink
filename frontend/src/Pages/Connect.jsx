@@ -89,7 +89,7 @@ const Connect = () => {
   useEffect(() => {
     const fetchDonors = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/donors'); // Adjust the endpoint as necessary
+        const response = await fetch('https://blood-link-server-phi.vercel.app/api/donors'); // Adjust the endpoint as necessary
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
