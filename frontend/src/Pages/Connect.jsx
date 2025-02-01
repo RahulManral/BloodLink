@@ -142,7 +142,6 @@ const Connect = () => {
                 <th className="py-3 px-4 border-b">Donor Name</th>
                 <th className="py-3 px-4 border-b text-red-600">Blood Type</th>
                 <th className="py-3 px-4 border-b">Location (District)</th>
-                <th className="py-3 px-4 border-b"></th>
                 <th className="py-3 px-4 border-b">Contact Number</th>
               </tr>
             </thead>
