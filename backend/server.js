@@ -8,9 +8,7 @@ const app = express();
 const PORT = 3000;
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: 'https://blood-link-server-phi.vercel.app/api/donors'
-}));
+app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
