@@ -240,35 +240,63 @@ const Donate = () => {
     });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  
+  //   try {
+  //     const response = await fetch('https://blood-link-server-phi.vercel.app/api/donors', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  
+  //     const data = await response.json();
+  //     console.log('Success:', data);
+      
+  //     // Show success alert
+  //     alert('Thank you for your donation! Your information has been submitted.');
+  
+  //     // Optionally reset form or show success message here
+  //     setFormData({ name: '', phone: '', district: '', bloodType: '' });
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //     alert('There was an error submitting your information. Please try again.');
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    
     try {
-      const response = await fetch('https://blood-link-server-phi.vercel.app/api/donors', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
-      const data = await response.json();
-      console.log('Success:', data);
-      
-      // Show success alert
-      alert('Thank you for your donation! Your information has been submitted.');
-  
-      // Optionally reset form or show success message here
-      setFormData({ name: '', phone: '', district: '', bloodType: '' });
+        const response = await fetch('https://blood-link-server-phi.vercel.app/api/donors', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`Error: ${errorData.message}`);
+        }
+
+        const data = await response.json();
+        console.log('Success:', data);
+        alert('Thank you for your donation! Your information has been submitted.');
+
+        setFormData({ name: '', phone: '', district: '', bloodType: '' });
     } catch (error) {
-      console.error('Error:', error);
-      alert('There was an error submitting your information. Please try again.');
+        console.error('Error adding donor:', error);
+        alert('There was an error submitting your information. Please try again.');
     }
-  };
+};
 
   return (
     <section 
