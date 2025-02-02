@@ -47,6 +47,7 @@ app.get('/api/donors', (req, res) => {
 // });
 
 app.post('/api/donors', (req, res) => {
+  console.log('Received data:', req.body); // Debugging line
   try {
       const db = readDb();
       const newDonor = req.body;
