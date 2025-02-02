@@ -9,7 +9,7 @@ const PORT = 3000;
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: 'https://bloodlink-donate.vercel.app/' // Replace with your frontend URL
+  origin: 'https://bloodlink-donate.vercel.app' // Replace with your frontend URL
 }));
 
 // Middleware to parse JSON bodies
