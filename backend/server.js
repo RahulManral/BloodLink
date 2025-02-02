@@ -8,7 +8,9 @@ const app = express();
 const PORT = 3000;
 
 // Enable CORS for all routes
-app.use(cors());
+app.use(cors({
+  origin: 'https://bloodlink-donate.vercel.app/' // Replace with your frontend URL
+}));
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
@@ -35,13 +37,27 @@ app.get('/api/donors', (req, res) => {
 
 
 // POST /api/donors - Create a new donor
+// app.post('/api/donors', (req, res) => {
+//   const db = readDb();
+//   const newDonor = req.body;
+//   newDonor.id = db.donors.length + 1; // Simple ID assignment
+//   db.donors.push(newDonor);
+//   writeDb(db);
+//   res.status(201).json(newDonor);
+// });
+
 app.post('/api/donors', (req, res) => {
-  const db = readDb();
-  const newDonor = req.body;
-  newDonor.id = db.donors.length + 1; // Simple ID assignment
-  db.donors.push(newDonor);
-  writeDb(db);
-  res.status(201).json(newDonor);
+  try {
+      const db = readDb();
+      const newDonor = req.body;
+      newDonor.id = db.donors.length + 1;
+      db.donors.push(newDonor);
+      writeDb(db);
+      res.status(201).json(newDonor);
+  } catch (error) {
+      console.error('Error adding donor:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
 });
 
 
