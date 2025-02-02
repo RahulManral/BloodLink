@@ -274,7 +274,7 @@ const Donate = () => {
     e.preventDefault();
     
     try {
-        const response = await fetch('https://blood-link-server-phi.vercel.app/api/donors', {
+        const response = await fetch('https://blood-link-server-phi.vercel.app/api/donors/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
